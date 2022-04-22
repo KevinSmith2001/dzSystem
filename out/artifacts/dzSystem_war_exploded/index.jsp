@@ -11,6 +11,12 @@
     <title>$Title$</title>
   </head>
   <body>
-  诶嘿
+  ©️NSI2020级JavaWeb实践2
+  Teacher:Feng Gu
+  dzSystem
+  联系方式:WeChat:354268857
+  特别鸣谢:
+  @百夜&@Kevin
+  尊重版权文化,
   </body>
 </html>

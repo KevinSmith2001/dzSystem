@@ -99,5 +99,21 @@
         <div style=" padding-left: 10px;">扫描二维码可在手机上登录系统</div>
     </div>
 </div>
+<script>
+function pay(){
+    $.ajax({
+        url:'pay',
+        type:'post',
+        dataType:'json',
+        success:function (data){
+            if(data==true){
+                location.href="paySuccess";
+            }else{
+                location.href="paySuccess?msg=支付失败或已支付！有问题联系管理员！<a href='pay'>点击返回支付</a>";
+            }
+        }
+    });
+}
+</script>
 </body>
 </html>

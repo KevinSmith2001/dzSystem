@@ -92,4 +92,7 @@ public class Pay {
 
     private String updateDate;
     private int delsign;
+
+    public void setPayType(int pay_type) {
+    }
 }

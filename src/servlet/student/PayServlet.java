@@ -15,8 +15,8 @@ public class PayServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //衔接前端付款页面提交过来的信息，查询一下这个考生在之前是否缴费，如果没缴费，插入数据库
         HttpSession session = request.getSession();
-        String idNumber = session.getAttribute("idNumber").toString();
-        Regist regist = new RegistMapper().selectByIdNumber(idNumber); //通过身份证号获取考生的全部信息进行存储
+        String sfzh = session.getAttribute("sfzh").toString();
+        Regist regist = new RegistMapper().selectByIdNumber(sfzh); //通过身份证号获取考生的全部信息进行存储
         Pay pay = new PayMapper().selectByRegistId(regist.getRegistId());
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
