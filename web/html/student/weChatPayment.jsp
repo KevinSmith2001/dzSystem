@@ -100,7 +100,20 @@
     </div>
 </div>
 <script>
-
+function pay(){
+    $.ajax({
+        url:'pay',
+        type:'post',
+        dataType:'json',
+        success:function (data){
+            if(data==true){
+                location.href="paySuccess";
+            }else{
+                location.href="paySuccess?msg=支付失败或已支付！有问题联系管理员！<a href='pay'>点击返回支付</a>";
+            }
+        }
+    });
+}
 </script>
 </body>
 </html>
