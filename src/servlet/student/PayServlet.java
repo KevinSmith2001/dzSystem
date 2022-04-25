@@ -3,6 +3,8 @@ import mapper.PayMapper;
 import mapper.RegistMapper;
 import model.Pay;
 import model.Regist;
+import util.DateUtil;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,7 +19,24 @@ public class PayServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String sfzh = session.getAttribute("sfzh").toString();
         Regist regist = new RegistMapper().selectByIdNumber(sfzh); //通过身份证号获取考生的全部信息进行存储
-        Pay pay = new PayMapper().selectByRegistId(regist.getRegistId());
+        Pay isPay = new PayMapper().selectByRegistId(regist.getRegistId()); //通过考生编号去查询这个考生之前是否有缴费记录
+        if(isPay==null){ //之前没有缴费记录,可以继续缴费
+            Pay pay = new Pay();
+            pay.setRegistId(regist.getRegistId());
+            pay.setPayType(1);
+            pay.setPrice(120.0);
+            pay.setInputName(sfzh);
+            pay.setInputDate(new DateUtil().getStringDate("yyyy-MM-dd HH:mm:ss"));
+            boolean isPaySuccess = new PayMapper().insert(pay);
+            if(isPaySuccess){
+                response.getWriter().write("true");
+            }else{
+                response.getWriter().write("false");
+            }
+
+        }else{
+            response.getWriter().write("false");
+        }
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();

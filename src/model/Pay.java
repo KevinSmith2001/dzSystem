@@ -3,7 +3,12 @@ package model;
 public class Pay {
     private int payId;
     private int registId;
-    private int pay_type;
+
+    public int getPayType() {
+        return payType;
+    }
+
+    private int payType;
     private double price;
     private String remark;
     private String inputName;
@@ -24,14 +29,6 @@ public class Pay {
 
     public void setRegistId(int registId) {
         this.registId = registId;
-    }
-
-    public int getPay_type() {
-        return pay_type;
-    }
-
-    public void setPay_type(int pay_type) {
-        this.pay_type = pay_type;
     }
 
     public double getPrice() {

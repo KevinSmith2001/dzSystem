@@ -37,4 +37,22 @@ public class PayMapper {
         }
         return null;
    }
+    public boolean insert(Pay pay) {
+        try {
+            pstmt = conn.prepareStatement("insert into pay_t(regist_id,pay_type,price,remark,input_name,input_date)values (?,?,?,?,?,?)");
+            pstmt.setInt(1,pay.getRegistId());
+            pstmt.setInt(2,pay.getPayType());
+            pstmt.setDouble(3,pay.getPrice());
+            pstmt.setString(4,pay.getRemark());
+            pstmt.setString(5,pay.getInputName());
+            pstmt.setString(6,pay.getInputDate());
+            int rs = pstmt.executeUpdate();
+            if (rs == 1) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }
