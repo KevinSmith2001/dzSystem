@@ -152,7 +152,9 @@
             <div class="" style="height:194px; overflow-y:scroll">
                 <div style="border: 1px  #000000; width: 90%; margin: 0 auto;">
                     <span>
-                        这里是学院简介这里是学院简介这里是学院简介这里是学院简介这里是学院简介
+                        <c:forEach items="${newsList}" var="item">
+                            <c:if test="${item.newsType == 1}">${item.content}</c:if>
+                        </c:forEach>
                     </span>
                 </div>
             </div>
@@ -218,7 +220,9 @@
             <div class="panel-body" style="height: 240px; overflow-y:scroll;border: 1px solid #c0c0c0">
                 <div style="border: 1px  #000000; width: 90%; margin: 0 auto;">
                 <span style="color: red;font-weight: bold;line-height: 20px">
-                    这里是最新通知这里是最新通知这里是最新通知这里是最新通知这里是最新通知
+                    <c:forEach items="${newsList}" var="item">
+                        <c:if test="${item.newsType == 2}">${item.content}</c:if>
+                    </c:forEach>
                 </span>
                 </div>
             </div>
@@ -230,12 +234,17 @@
                 </h4>
             </div>
             <ul class="xw list-unstyled" style="height: 240px;padding: 20px 0;overflow-y:scroll">
+                <c:forEach items="${newsList}" var="item">
+                    <c:if test="${item.newsType == 3}">
+                </c:forEach>
                 <li>
                     <div style="display:flex;justify-content: space-between;padding:5px 0">
-                        <a href="#">新闻标题</a>
-                        <div class="list-time">发布时间</div>
+                        <a href="news?newsId=${item.newsId}" target="_blank">${item.title}</a>
+                        <div class="list-time">${item.publishDate}</div>
                     </div>
                 </li>
+                </c:if>
+                </c:forEach>
             </ul>
         </div>
         <div class="col-sm-4">
@@ -245,12 +254,16 @@
                 </h4>
             </div>
             <ul class="xw list-unstyled" style="height: 240px;padding: 20px 0;overflow-y:scroll">
+                <c:forEach items="${newsList}" var="item">
+                    <c:if test="${item.newsType==4}">
                 <li>
                     <div style="display:flex;justify-content: space-between;padding:5px 0">
-                        <a href="#">新闻标题</a>
-                        <div class="list-time">发布时间</div>
+                        <a href="news?newsId=${item.newsId}" target="_blank">${item.title}</a>
+                        <div class="list-time">${item.publishDate}</div>
                     </div>
                 </li>
+                    </c:if>
+                </c:forEach>
             </ul>
         </div>
     </div>

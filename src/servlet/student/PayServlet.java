@@ -25,6 +25,7 @@ public class PayServlet extends HttpServlet {
             pay.setRegistId(regist.getRegistId());
             pay.setPayType(1);
             pay.setPrice(120.0);
+            pay.setRemark("sb");
             pay.setInputName(sfzh);
             pay.setInputDate(new DateUtil().getStringDate("yyyy-MM-dd HH:mm:ss"));
             boolean isPaySuccess = new PayMapper().insert(pay);
